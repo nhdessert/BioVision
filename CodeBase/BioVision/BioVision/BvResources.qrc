@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="Play.png">Assets/PlayBlack.png</file>
+        <file alias="Stop.png">Assets/StopBlack.png</file>
+        <file alias="SelectRegion.png">Assets/SelectRegion.png</file>
+        <file alias="Pause.png">Assets/PauseBlack.png</file>
+        <file alias="BioVisionLogo.png">Assets/BioVisionLogo.png</file>
+    </qresource>
+</RCC>

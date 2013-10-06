@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AboutWindow</class>
+ <widget class="QWidget" name="AboutWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>574</width>
+    <height>367</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>About</string>
+  </property>
+  <widget class="QLabel" name="labelVersion">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>170</y>
+     <width>571</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Version: 3.0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelCreatedBy">
+   <property name="geometry">
+    <rect>
+     <x>-1</x>
+     <y>190</y>
+     <width>571</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Developed By: Jacob Boncher, Nathaniel Dessert, Dustin Morabito,</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="clientName">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>240</y>
+     <width>571</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Commissioned By: Dr. Anne Danielson-Francois</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="clientTitle">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>250</y>
+     <width>571</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Assistant Professor of Biological Sciences</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="schoolName">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>265</y>
+     <width>571</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>University of Michigan-Dearborn</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="techUsed">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>300</y>
+     <width>571</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>External Technologies Used: Qt Version 4.8.3, OpenCV Version 2.4.2</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="openCvInfo">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>290</y>
+     <width>151</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="website">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>330</y>
+     <width>571</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Website: http://www.nhdlite.com/BioVision</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="creditsLine2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>205</y>
+     <width>571</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Joshua Morrison, Daniel Painter, and Molly Pohutski</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bioLogo">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>10</y>
+     <width>151</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="BvResources.qrc">:/images/BioVisionLogo.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="BvResources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

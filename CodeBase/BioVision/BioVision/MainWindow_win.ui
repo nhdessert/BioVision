@@ -1,0 +1,944 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>870</width>
+    <height>680</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>BioVision</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QFrame" name="ToolbarFrame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>850</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLineEdit" name="thresholdValue">
+     <property name="geometry">
+      <rect>
+       <x>800</x>
+       <y>5</y>
+       <width>31</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QSlider" name="thresholdSlider">
+     <property name="geometry">
+      <rect>
+       <x>519</x>
+       <y>5</y>
+       <width>271</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QToolButton" name="selectRegionButton">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>30</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Press to activate region selection.</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="BvResources.qrc">
+       <normaloff>:/images/SelectRegion.png</normaloff>:/images/SelectRegion.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="shortcut">
+      <string>Ctrl+Shift+R</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Analyze">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>5</y>
+       <width>75</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Press to begin analyzing the selected video and associated regions.</string>
+     </property>
+     <property name="text">
+      <string>Analyze</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="previewCheckbox">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>5</y>
+       <width>60</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Check to get detailed output from this analyze run.</string>
+     </property>
+     <property name="text">
+      <string>Preview</string>
+     </property>
+    </widget>
+    <widget class="QTimeEdit" name="startTime">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>4</y>
+       <width>60</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Select a start video time for analyze.</string>
+     </property>
+     <property name="currentSection">
+      <enum>QDateTimeEdit::HourSection</enum>
+     </property>
+     <property name="displayFormat">
+      <string>h:mm:ss</string>
+     </property>
+    </widget>
+    <widget class="QTimeEdit" name="stopTime">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>4</y>
+       <width>60</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Select an end video time for analyze.</string>
+     </property>
+     <property name="currentSection">
+      <enum>QDateTimeEdit::HourSection</enum>
+     </property>
+     <property name="displayFormat">
+      <string>h:mm:ss</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>4</y>
+       <width>61</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>This is the default threshold for the video, provided that regions are not selected.</string>
+     </property>
+     <property name="text">
+      <string>Sensitivity:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="startLabel">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>7</y>
+       <width>61</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Start Time:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="stopLabel">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>7</y>
+       <width>61</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Stop Time:</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="FileFrame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>200</width>
+      <height>400</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QTreeWidget" name="projectBrowser">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>200</width>
+       <height>400</height>
+      </rect>
+     </property>
+     <property name="columnCount">
+      <number>1</number>
+     </property>
+     <attribute name="headerVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="headerStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string notr="true">1</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="CarouselFrame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>460</y>
+      <width>850</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QDeclarativeView" name="declarativeView">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>850</width>
+       <height>141</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="PlayerFrame">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>50</y>
+      <width>640</width>
+      <height>360</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="Phonon::VideoPlayer" name="videoPlayer" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>641</width>
+       <height>360</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="PlayerToolsFrame">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>420</y>
+      <width>640</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="Phonon::SeekSlider" name="seekSlider" native="true">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>6</y>
+       <width>341</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="Phonon::VolumeSlider" name="volumeSlider" native="true">
+     <property name="geometry">
+      <rect>
+       <x>528</x>
+       <y>5</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="totalVidTime">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>5</y>
+       <width>46</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>00:00:00</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="curVidTime">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>5</y>
+       <width>46</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>00:00:00</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="PlayButton">
+     <property name="geometry">
+      <rect>
+       <x>65</x>
+       <y>-1</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:transparent;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="BvResources.qrc">
+       <normaloff>:/images/Play.png</normaloff>:/images/Play.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>30</width>
+       <height>30</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="StatusFrame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>610</y>
+      <width>851</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QProgressBar" name="progressBar">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>760</width>
+       <height>29</height>
+      </rect>
+     </property>
+     <property name="value">
+      <number>0</number>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cancel">
+     <property name="geometry">
+      <rect>
+       <x>770</x>
+       <y>0</y>
+       <width>80</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Cancel this analyze task</string>
+     </property>
+     <property name="text">
+      <string>Cancel</string>
+     </property>
+     <property name="shortcut">
+      <string>Ctrl+Shift+C</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>870</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionNew_Project"/>
+    <addaction name="actionLoad_Project"/>
+    <addaction name="actionSave_Project"/>
+    <addaction name="actionSave_Project_As"/>
+    <addaction name="actionSave_All_Projects"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionAdd_Video"/>
+    <addaction name="actionRemove_Video"/>
+    <addaction name="actionDelete_Region_From_Video"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionHelp"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuProject">
+    <property name="title">
+     <string>Project</string>
+    </property>
+    <addaction name="actionAnalyze"/>
+    <addaction name="actionOpen_Excel_Report"/>
+    <addaction name="actionViewWorkspace"/>
+   </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Options</string>
+    </property>
+    <widget class="QMenu" name="menuAnalyze_Settings">
+     <property name="title">
+      <string>Analyze Settings</string>
+     </property>
+     <widget class="QMenu" name="menuImage_Size">
+      <property name="title">
+       <string>Image Size</string>
+      </property>
+      <addaction name="actionNativeSavedImageSize"/>
+      <addaction name="actionSmallSavedImageSize"/>
+      <addaction name="actionMediumSavedImageSize"/>
+     </widget>
+     <addaction name="actionOutput_Images"/>
+     <addaction name="actionFull_Frame_Analysis"/>
+     <addaction name="menuImage_Size"/>
+    </widget>
+    <widget class="QMenu" name="menuPreview_Analysis_Settings">
+     <property name="title">
+      <string>Preview Analysis Settings</string>
+     </property>
+     <widget class="QMenu" name="menuWindow_Size">
+      <property name="title">
+       <string>Window Size</string>
+      </property>
+      <addaction name="actionNativeWindowSize"/>
+      <addaction name="actionMediumWindowSize"/>
+      <addaction name="actionLargeWindowSize"/>
+     </widget>
+     <widget class="QMenu" name="menuPreview_Speed">
+      <property name="title">
+       <string>Preview Speed</string>
+      </property>
+      <addaction name="actionSlowPreviewSpeed"/>
+      <addaction name="actionMediumPreviewSpeed"/>
+      <addaction name="actionFastPreviewSpeed"/>
+     </widget>
+     <addaction name="menuPreview_Speed"/>
+     <addaction name="menuWindow_Size"/>
+    </widget>
+    <addaction name="actionAdd_Video_Edit_Point"/>
+    <addaction name="actionRemove_Last_Edit_Point"/>
+    <addaction name="menuPreview_Analysis_Settings"/>
+    <addaction name="menuAnalyze_Settings"/>
+    <addaction name="actionOptions"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuProject"/>
+   <addaction name="menuTools"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionLoad_Project">
+   <property name="text">
+    <string>Open Project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSave_Project">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Save Project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSave_Project_As">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Save Project As</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionAdd_Video">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Add Video To Project</string>
+   </property>
+  </action>
+  <action name="actionRemove_Video">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Remove Video From Project</string>
+   </property>
+  </action>
+  <action name="actionLaunch_RegionWindow">
+   <property name="text">
+    <string>Launch RegionWindow</string>
+   </property>
+  </action>
+  <action name="actionLoad_Video">
+   <property name="text">
+    <string>Load Video</string>
+   </property>
+  </action>
+  <action name="actionHello_CV">
+   <property name="text">
+    <string>Hello CV</string>
+   </property>
+  </action>
+  <action name="actionCopyFile_OS_API_CALL">
+   <property name="text">
+    <string>CopyFile (OS API Call)</string>
+   </property>
+  </action>
+  <action name="actionLaunch_DocumentationWindow">
+   <property name="text">
+    <string>Launch DocumentationWindow</string>
+   </property>
+  </action>
+  <action name="actionLaunch_AboutWindow">
+   <property name="text">
+    <string>Launch AboutWindow</string>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="text">
+    <string>Help</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionLaunch_SimpleAnalyzeProgressWindow">
+   <property name="text">
+    <string>Launch SimpleAnalyzeProgressWindow</string>
+   </property>
+  </action>
+  <action name="actionDelete_Region_From_Video">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Delete Region From Video</string>
+   </property>
+  </action>
+  <action name="actionSave_All_Projects">
+   <property name="text">
+    <string>Save All Projects</string>
+   </property>
+  </action>
+  <action name="actionNew_Project">
+   <property name="text">
+    <string>New Project</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionTestAnimations">
+   <property name="text">
+    <string>Test Animations</string>
+   </property>
+  </action>
+  <action name="actionOptions">
+   <property name="text">
+    <string>BioVision Settings</string>
+   </property>
+  </action>
+  <action name="actionAnalyze">
+   <property name="text">
+    <string>Analyze Current Video</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+A</string>
+   </property>
+  </action>
+  <action name="actionViewWorkspace">
+   <property name="text">
+    <string>View Workspace Folder</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+W</string>
+   </property>
+  </action>
+  <action name="actionProperties">
+   <property name="text">
+    <string>Properties</string>
+   </property>
+  </action>
+  <action name="actionAdd_Video_Edit_Point">
+   <property name="text">
+    <string>Set A Time to Stop Analyzing</string>
+   </property>
+   <property name="iconText">
+    <string>Set A Time to Stop Analyzing</string>
+   </property>
+   <property name="toolTip">
+    <string>Sets Sections of Time in Video that will be exempt from Analysis within the Start and end Times of an Analysis </string>
+   </property>
+  </action>
+  <action name="actionRemove_Last_Edit_Point">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Remove Last Edit Point</string>
+   </property>
+  </action>
+  <action name="actionSlowPreviewSpeed">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Slow</string>
+   </property>
+  </action>
+  <action name="actionMediumPreviewSpeed">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Medium</string>
+   </property>
+  </action>
+  <action name="actionFastPreviewSpeed">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Fast</string>
+   </property>
+  </action>
+  <action name="actionNativeWindowSize">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Native</string>
+   </property>
+  </action>
+  <action name="actionMediumWindowSize">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Medium</string>
+   </property>
+  </action>
+  <action name="actionLargeWindowSize">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Large</string>
+   </property>
+  </action>
+  <action name="actionOutput_Images">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Output Images</string>
+   </property>
+  </action>
+  <action name="actionNativeSavedImageSize">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Native</string>
+   </property>
+  </action>
+  <action name="actionMediumSavedImageSize">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Medium</string>
+   </property>
+   <property name="toolTip">
+    <string>Medium</string>
+   </property>
+  </action>
+  <action name="actionSmallSavedImageSize">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Small</string>
+   </property>
+  </action>
+  <action name="actionFull_Frame_Analysis">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Full Frame Analysis</string>
+   </property>
+  </action>
+  <action name="actionOpen_Excel_Report">
+   <property name="text">
+    <string>Open Excel Report</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+E</string>
+   </property>
+  </action>
+  <action name="actionFull_Frame_Analysis">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Full Frame Analysis</string>
+   </property>
+  </action>
+  <action name="actionOutput_Images">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Output Images</string>
+   </property>
+  </action>
+  <action name="actionNative">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Native</string>
+   </property>
+  </action>
+  <action name="actionMedium">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Small</string>
+   </property>
+  </action>
+  <action name="actionLarge">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Medium</string>
+   </property>
+  </action>
+  <action name="actionNativeWindowSize">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Native</string>
+   </property>
+  </action>
+  <action name="actionMedium">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Medium</string>
+   </property>
+  </action>
+  <action name="actionLargeWindowSize">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Lar</string>
+   </property>
+  </action>
+  <action name="actionSlowPreviewSpeed">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Slow</string>
+   </property>
+  </action>
+  <action name="actionMedium">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Medium</string>
+   </property>
+  </action>
+  <action name="actionFastPreviewSpeed">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Fast</string>
+   </property>
+  </action>
+  <action name="actionMediumWindowSize">
+   <property name="text">
+    <string>Medium</string>
+   </property>
+  </action>
+  <action name="actionMediumPreviewSpeed">
+   <property name="text">
+    <string>Medium</string>
+   </property>
+  </action>
+  <action name="actionNativeSavedImageSize">
+   <property name="text">
+    <string>n</string>
+   </property>
+  </action>
+  <action name="actionSmallSavedImageSize">
+   <property name="text">
+    <string>s</string>
+   </property>
+  </action>
+  <action name="actionMediumSavedImageSize">
+   <property name="text">
+    <string>m</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QDeclarativeView</class>
+   <extends>QGraphicsView</extends>
+   <header>QtDeclarative/QDeclarativeView</header>
+  </customwidget>
+  <customwidget>
+   <class>Phonon::VideoPlayer</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/videoplayer.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Phonon::SeekSlider</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/seekslider.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Phonon::VolumeSlider</class>
+   <extends>QWidget</extends>
+   <header location="global">phonon/volumeslider.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="BvResources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
